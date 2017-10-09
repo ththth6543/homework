@@ -6,15 +6,16 @@
 int main(void)
 {
 	char **player;
-	int i, j, d, c, num, num_word = 0;
-	num = 0;
-
-	while (num<5)
+	int i, j, d, c;
+	i = 0;
+	
+	while (i<5)
 	{
 		printf("입력 : ");
-		i = 0;
 		while (1)
 		{
+			*(*(player + i)) = c;
+			
 			*(*(player + i) + 1) = getchar();
 			
 			if ((c == '\n') || (c == EOF))
@@ -22,13 +23,13 @@ int main(void)
 				player[i] = '\0';
 				break;
 			}
-			*(*(player + i)) = c;
+			
 		}
-		player = (char *)calloc(strlen(player) + 1, sizeof(char));
-		num++;
+		*(player+i) = (char *)calloc(strlen(player) + 1, sizeof(char));
+		i++;
 	}
 	for (j = 0; j<10; j++)
-		printf("%s", player + j);
+		printf("%s", *(player + j));
 
 	for (d = 0; d < 10; d++)
 		free(player+d);
