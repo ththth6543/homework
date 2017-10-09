@@ -6,34 +6,21 @@
 int main(void)
 {
 	char **player = (char **)calloc(10, sizeof(char *));
-	int i, j, d;
-	i = 0;
-	
-	while (i<10)
+	int i, j, d, k;
+
+	for (k = 0; k < 10; k++)
 	{
 		printf("입력 : ");
-		while (i<10)
+		*(player + k) = (char *)calloc(6, sizeof(char));
+		for (i = 0; i < 4; i++)
 		{
-			*(player + i) = (char *)calloc(4, sizeof(char));
-			
-			*(*(player + i)) = getchar();
-			
-			
-
-			if ((*(*(player + i)) == '\n') || (*(*(player + i)) == EOF))
-			{
-				*(player+i) = '\0';
+			*(*(player + k) + i) = getchar();
+			if (((*(*(player + k) + i)) == '\n') || (*(*(player + k) + i) == EOF))
 				break;
-			}
 		}
-		
-		i++;
 	}
-	for (j = 0; j < 10; j++)
-	{
+	for (j=0; j<10; j++)
 		printf("%s", *(player+j));
-		//printf("%d", atoi( *(*(player + j))) );
-	}
 
 	for (d = 0; d < 10; d++)
 		free(player+d);
