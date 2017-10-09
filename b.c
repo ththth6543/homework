@@ -31,7 +31,7 @@ int main(void)
 	}
 	for (j = 0; j < 10; j++)
 	{
-		printf("%s", *(player)+j);
+		printf("%s", *(player+j));
 		//printf("%d", atoi( *(*(player + j))) );
 	}
 
